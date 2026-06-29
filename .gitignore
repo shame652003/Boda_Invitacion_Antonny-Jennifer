@@ -1,0 +1,15 @@
+# OS
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swo
+*.swp
+
+# Temp
+*.log
+node_modules/
+.env
