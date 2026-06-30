@@ -150,6 +150,11 @@ function initScrollReveals() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
+
+                const swiperEl = entry.target.querySelector('.comments-swiper');
+                if (swiperEl && swiperEl.swiper) {
+                    swiperEl.swiper.update();
+                }
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
@@ -571,6 +576,76 @@ function initPetalRain() {
 }
 
 // =====================
+// MÓDULO: REPRODUCTOR DE MÚSICA (Vinilo)
+// =====================
+function initMusicPlayer() {
+    const audio = document.getElementById('bg-music');
+    const btn = document.getElementById('music-btn');
+    const disc = document.getElementById('vinyl-disc');
+    const notesContainer = document.getElementById('music-notes');
+
+    if (!audio || !btn || !disc || !notesContainer) return;
+
+    let isPlaying = false;
+    let noteInterval = null;
+
+    function spawnNote() {
+        const symbols = ['♫', '♪', '✦', '♬', '♩'];
+        const note = document.createElement('span');
+        note.classList.add('music-note');
+        note.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+
+        const xOffset = (Math.random() - 0.5) * 36;
+        gsap.set(note, { x: xOffset, y: 6, opacity: 0.75, rotation: Math.random() * 30 });
+        notesContainer.appendChild(note);
+
+        gsap.to(note, {
+            y: -55,
+            x: xOffset + (Math.random() - 0.5) * 28,
+            opacity: 0,
+            duration: 2 + Math.random() * 1.8,
+            ease: 'power2.out',
+            onComplete: function () { note.remove(); }
+        });
+    }
+
+    function startNotes() {
+        spawnNote();
+        noteInterval = setInterval(spawnNote, 650);
+    }
+
+    function stopNotes() {
+        if (noteInterval) { clearInterval(noteInterval); noteInterval = null; }
+    }
+
+    btn.addEventListener('click', function () {
+        if (isPlaying) {
+            audio.pause();
+            disc.classList.remove('playing');
+            btn.innerHTML = '<i class="bi bi-play-fill"></i>';
+            btn.setAttribute('aria-label', 'Reproducir música');
+            stopNotes();
+        } else {
+            audio.play().catch(function () { });
+            disc.classList.add('playing');
+            btn.innerHTML = '<i class="bi bi-pause-fill"></i>';
+            btn.setAttribute('aria-label', 'Pausar música');
+            startNotes();
+        }
+        isPlaying = !isPlaying;
+    });
+
+    // Intentar autoplay suave en primera interacción del usuario
+    const autoplayAttempt = function () {
+        if (!isPlaying) {
+            btn.click();
+        }
+        document.removeEventListener('click', autoplayAttempt);
+    };
+    document.addEventListener('click', autoplayAttempt, { once: true });
+}
+
+// =====================
 // INICIALIZACIÓN GLOBAL
 // =====================
 document.addEventListener('DOMContentLoaded', () => {
@@ -581,11 +656,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initGifts();
     initRsvp();
     initPetalRain();
+    initMusicPlayer();
 
     setTimeout(() => {
         initTimelineAnimations();
         initParallax();
-        initGuestbookSwiper();
     }, 100);
 });
 

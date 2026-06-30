@@ -700,6 +700,7 @@ section {
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-soft);
     border: 1px solid rgba(0,0,0,0.03);
+    margin-bottom: 1rem;
 }
 
 .guestbook-form .form-control {
@@ -750,8 +751,9 @@ section {
 
 /* Guestbook wall */
 .guestbook-wall {
-    margin-top: 4rem;
+    margin-top: 5rem;
     align-items: center;
+    padding-bottom: 0.5rem;
 }
 
 .guest-card {
@@ -853,6 +855,14 @@ section {
     15% { transform: scale(1.15); }
     30% { transform: scale(1); }
     45% { transform: scale(1.1); }
+}
+
+.gifts-note {
+    background: rgba(184, 149, 106, 0.06);
+    border-left: 3px solid var(--color-gold);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 1rem 1.25rem;
+    font-size: 0.95rem;
 }
 
 .gift-card {
@@ -1474,6 +1484,90 @@ section {
     margin-top: 0.25rem;
 }
 
+/* -------------------- MUSIC PLAYER -------------------- */
+#bg-music {
+    display: none;
+}
+
+.music-player {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.vinyl-disc {
+    width: 44px;
+    height: 44px;
+    background: radial-gradient(circle at center, var(--color-gold) 18%, #1a1a1a 19%, #2e2e2e 100%);
+    border-radius: 50%;
+    border: 2px solid var(--color-gold);
+    box-shadow: 0 4px 16px rgba(26, 26, 26, 0.2);
+    animation: vinylSpin 4s linear infinite;
+    animation-play-state: paused;
+    position: relative;
+}
+
+.vinyl-disc.playing {
+    animation-play-state: running;
+}
+
+.vinyl-label {
+    position: absolute;
+    inset: 38%;
+    background: var(--color-gold-light);
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+
+@keyframes vinylSpin {
+    100% { transform: rotate(360deg); }
+}
+
+.music-btn {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-gold);
+    color: var(--color-white);
+    font-size: 0.7rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+.music-btn:hover {
+    background: var(--color-gold-dark);
+    transform: scale(1.15);
+}
+
+.music-notes {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+}
+
+.music-note {
+    position: absolute;
+    font-size: 1rem;
+    color: var(--color-gold);
+    opacity: 0;
+    pointer-events: none;
+}
+
 /* -------------------- COMMENTS SWIPER -------------------- */
 .comments-swiper {
     padding-bottom: 2.5rem;
@@ -1481,11 +1575,16 @@ section {
 }
 
 .comments-swiper .swiper-slide {
-    width: 320px;
-    max-width: 90vw;
+    width: 100%;
+    max-width: 85vw;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.comments-swiper .guest-card {
+    animation: none;
+    opacity: 1;
 }
 
 .comments-swiper .swiper-pagination-bullet {

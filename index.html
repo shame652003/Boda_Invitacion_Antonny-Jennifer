@@ -290,9 +290,11 @@
                     </div>
                 </div>
 
-                <div class="swiper comments-swiper reveal">
+                <div class="reveal">
+                    <div class="swiper comments-swiper">
                     <div id="guestbook-wall" class="swiper-wrapper"></div>
                     <div class="swiper-pagination comments-pagination"></div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -309,6 +311,7 @@
                 <div class="gifts-intro reveal">
                     <p class="gifts-text">El mejor regalo que podemos recibir es su <strong>presencia</strong> en este día tan especial, lleno de amor y felicidad.</p>
                     <p class="gifts-text">Pero si desean tener un detalle con nosotros, pueden colaborar con nuestro fondo de bodas y luna de miel. Cada gesto, por pequeño que sea, será recordado con mucho cariño.</p>
+                    <p class="gifts-text gifts-note">Además, <strong>tendremos punto de venta</strong> el día del evento para quienes deseen obsequiarnos con tarjeta de crédito o débito.</p>
                     <div class="gifts-heart"><i class="bi bi-heart-fill"></i></div>
                 </div>
 
@@ -408,6 +411,21 @@
 
     <!-- ==================== TOAST NOTIFICATION ==================== -->
     <div id="toast" class="toast-notification"><i class="bi bi-check-circle-fill"></i><span>¡Copiado con éxito! Gracias por tu cariño 💛</span></div>
+
+    <!-- ==================== AUDIO + MUSIC PLAYER ==================== -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="img/musica.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="music-player" class="music-player">
+        <div class="vinyl-disc" id="vinyl-disc">
+            <span class="vinyl-label"></span>
+        </div>
+        <button class="music-btn" id="music-btn" aria-label="Reproducir música" title="Reproducir música">
+            <i class="bi bi-play-fill"></i>
+        </button>
+        <div class="music-notes" id="music-notes"></div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
