@@ -5,8 +5,8 @@
    ========================================================== */
 
 const CONFIG = {
-    WHATSAPP_NUMBER: 'TU_NUMERO_AQUI',
-    TARGET_DATE: new Date('2026-09-15T11:00:00').getTime(),
+    WHATSAPP_NUMBER: '584124475293',
+    TARGET_DATE: new Date('2026-09-19T18:30:00').getTime(),
     STORAGE_KEY: 'jennifer_anthony_guestbook',
     STORAGE_VERSION: '1.0'
 };
@@ -456,9 +456,9 @@ function initRsvp() {
         let message = '';
 
         if (rsvpType === 'yes') {
-            message = `¡Hola Jennifer y Anthony! Confirmadísimo, allí estaré con ustedes el 15 de septiembre para celebrar su amor. Mi nombre es ${fullName} ✨. ¡Qué emoción!`;
+            message = `¡Hola Jennifer y Anthony! Confirmadísimo, allí estaré con ustedes el 19 de septiembre para celebrar su amor. Mi nombre es ${fullName} ✨. ¡Qué emoción!`;
         } else {
-            message = `¡Hola Jennifer y Anthony! Lamentablemente no podré asistir a su boda el 15 de septiembre, pero les deseo todo el amor del mundo en esta nueva etapa. ¡Un abrazo fuerte! ❤️ Mi nombre es ${fullName}.`;
+            message = `¡Hola Jennifer y Anthony! Lamentablemente no podré asistir a su boda el 19 de septiembre, pero les deseo todo el amor del mundo en esta nueva etapa. ¡Un abrazo fuerte! ❤️ Mi nombre es ${fullName}.`;
         }
 
         const encodedMessage = encodeURIComponent(message);

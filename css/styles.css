@@ -1451,6 +1451,29 @@ section {
     will-change: transform, opacity;
 }
 
+/* -------------------- CONTACT ITEMS -------------------- */
+.contact-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px dashed rgba(0,0,0,0.06);
+}
+
+.contact-item:last-child {
+    border-bottom: none;
+}
+
+.contact-item .detail-label {
+    font-size: 0.85rem;
+    color: var(--color-text-light);
+    font-weight: 400;
+}
+
+.contact-item .btn-copy {
+    margin-top: 0.25rem;
+}
+
 /* -------------------- COMMENTS SWIPER -------------------- */
 .comments-swiper {
     padding-bottom: 2.5rem;
